@@ -1,0 +1,24 @@
+{
+  "name": "me-games-project",
+  "version": "1.0.0",
+  "description": "A sample of games I've developed",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run build:dev",
+    "build:dev": "parcel index.html",
+    "build:prod": "parcel index.html --minify",
+    "serve": "parcel index.html --open"
+  },
+  "dependencies": {
+    "sass": "^1.46.0",
+    "vue": "^3.2.26"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.3",
+    "@parcel/transformer-vue": "^2.8.3",
+    "buffer": "^5.7.1",
+    "eruda": "*",
+    "parcel": "^2.0.12",
+    "process": "^0.11.10"
+  }
+}
