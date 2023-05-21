@@ -94,6 +94,23 @@ header {
   }  
 }
 
+.picture-container::after {
+  content: '\25B6'; /* HTML entity for a right-pointing triangle (play button) */
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 30px;
+}
+
 @media (orientation: portrait) {
   // Mobile phone portrait layout (1 row)  
   .grid {
@@ -125,16 +142,19 @@ header {
   .grid .card:last-child {
     margin-right: 0;
   }
+
+  .picture-container {
+       flex: 1;
+       &::after {
+          right: 50%;
+          top: 50%;  
+       }
+    }
 }
 
-
-@media (orientation: landscape) {
-  
-  @media (min-width: 768px) {
-      .grid {
-         margin: 0 2%;   
-      }
-     
+ 
+@media (min-width: 768px) {
+      
       main, body, html, .grid {
         min-height: 100%; 
         height: auto;
@@ -145,20 +165,17 @@ header {
     .grid {
         grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
         grid-auto-rows: minmax(100vh, 350px);
+        margin: 0 2%;
     }
   
      .card {
        flex-direction: column;
        width: auto;
        height: 100%;
-     }
-  
-     .picture-container {
-       flex: 1;
-     }
-   }
+     }  
+}
    
-   @media (max-height: 480px) and (max-width: 767px) {  
+@media (max-height: 480px) and (max-width: 767px) {  
      
      .grid {
         overflow-y: auto;
@@ -180,7 +197,14 @@ header {
       min-width: 100vw;
       height: 100%;
     }
-     
+     .picture-container {
+       &::after {
+          right: 2%;
+          left: auto;
+          top: auto;
+          bottom: 15%;  
+       }
+    }
     .header, .p {
       z-index: 4;
       position: absolute;
@@ -200,17 +224,21 @@ header {
     }
 
   }
+
+@media (min-width: 960px) {
+  
+  .grayscale-background {
+    filter: grayscale(100%); /* Apply grayscale effect */
+    transition: filter 0.3s ease-in-out;
+  }
+      
+      
+   .grayscale-background:hover {
+     filter: grayscale(0); /* Remove grayscale effect on hover */
+    }
+
+    
 }
 
 
-
-    .grayscale-background {
-        filter: grayscale(100%); /* Apply grayscale effect */
-        transition: filter 0.3s ease-in-out;
-      }
-      
-      
-     .grayscale-background:hover {
-       filter: grayscale(0); /* Remove grayscale effect on hover */
-      }
-    
+  
